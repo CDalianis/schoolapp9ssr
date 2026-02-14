@@ -13,9 +13,10 @@ import java.util.UUID;
 
 public interface ITeacherService {
     TeacherReadOnlyDTO saveTeacher(TeacherInsertDTO teacherInsertDTO)
-        throws EntityAlreadyExistsException, EntityInvalidArgumentException;
+            throws EntityAlreadyExistsException, EntityInvalidArgumentException;
 
-    public boolean isTeacherExists(String uuid);
+    boolean isTeacherExists(String uuid);
+
     Page<TeacherReadOnlyDTO> getPaginatedTeachers(Pageable pageable);
     Page<TeacherReadOnlyDTO> getPaginatedTeachersDeletedFalse(Pageable pageable);
 
@@ -23,4 +24,7 @@ public interface ITeacherService {
 
     TeacherReadOnlyDTO updateTeacher(TeacherEditDTO teacherEditDTO)
             throws EntityNotFoundException, EntityAlreadyExistsException, EntityInvalidArgumentException;
+
+    TeacherReadOnlyDTO deleteTeacherByUUID(UUID uuid) throws EntityNotFoundException;
+
 }
